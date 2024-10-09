@@ -2,7 +2,7 @@ import gradio as gr
 from gtts import gTTS
 import subprocess
 import os
-api_key = os.getenv("HF_API_KEY") # Get your API key from huggingface.co
+api_key = os.getenv("API_KEY")
 
 def inference(audio, model):
     en_hk_two_pass = gr.Interface.load("huggingface/facebook/xm_transformer_unity_en-hk", api_key=api_key)
@@ -25,7 +25,7 @@ def speech_to_hk():
     tmpfile_location = inference("/tmp/english_audio.mp3", "xm_transformer_unity_en-hk")
     return tmpfile_location
 
-sentence = 'Hello, how are you? I want to eat some tofu pudding and beef noodle soup. I am very hungry.'
+sentence = 'Hello, how are you? I am fine, thank you.'
 
 text_to_speech(sentence)
 hk_audio = speech_to_hk()
